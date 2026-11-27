@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap 5 Form Width Utilities – Demo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+  <!-- Load AFTER Bootstrap -->
+  <link href="bs5-form-widths.css" rel="stylesheet">
+
+  <style>
+    /* Demo-only styling */
+    .demo-box { background: var(--bs-tertiary-bg); border: 1px dashed var(--bs-border-color); border-radius: .5rem; padding: 1rem; }
+    pre { background: var(--bs-dark); color: var(--bs-light); padding: .75rem 1rem; border-radius: .5rem; font-size: .8rem; margin: .75rem 0 0; }
+    section { margin-bottom: 3rem; }
+  </style>
+</head>
+<body>
+<div class="container py-5">
+
+  <header class="mb-5">
+    <h1 class="h2">Bootstrap 5 Form Width Utilities</h1>
+    <p class="lead mb-2">Set form field widths on a 12-column scale, as block or inline fields.</p>
+    <p class="mb-0">
+      <span class="badge text-bg-success d-none d-sm-inline">576px and up: widths active</span>
+      <span class="badge text-bg-warning d-sm-none">Below 576px: fields are full width</span>
+      <small class="text-body-secondary ms-2">Resize the window to see the mobile fallback.</small>
+    </p>
+    <div class="alert alert-info small mt-3 mb-2" role="note">
+      Load <code>bs5-form-widths.css</code> <strong>after</strong> Bootstrap's CSS, or Bootstrap's own field widths will override it:
+      <pre class="mb-0 mt-2"><code>&lt;link href="bootstrap.min.css" rel="stylesheet"&gt;
+&lt;link href="bs5-form-widths.min.css" rel="stylesheet"&gt;</code></pre>
+    </div>
+    <p class="small text-body-secondary mb-0">The code under each example is the exact HTML of that example.</p>
+  </header>
+
+  <!-- Block -->
+  <section>
+    <h2 class="h4">Block widths</h2>
+    <p>Each field stacks on its own line. <code>form-sm-1</code> through <code>form-sm-12</code>.</p>
+    <div class="demo-box">
+      <input class="form-control form-sm-3 mb-2" placeholder=".form-sm-3">
+      <input class="form-control form-sm-6 mb-2" placeholder=".form-sm-6">
+      <input class="form-control form-sm-9 mb-2" placeholder=".form-sm-9">
+      <input class="form-control form-sm-12" placeholder=".form-sm-12">
+    </div>
+  </section>
+
+  <!-- Inline, no wrapper -->
+  <section>
+    <h2 class="h4">Inline widths without a wrapper</h2>
+    <p>Fields sit side by side. Without a flex wrapper, browsers add a small whitespace gap between
+      inline-block elements, so a row that adds up to 12 can wrap. Here, the 4 + 4 + 4 and 6 + 6 rows
+      may not fit on one line:</p>
+    <div class="demo-box">
+      <input class="form-control form-sm-4-inline mb-2" placeholder=".form-sm-4-inline">
+      <input class="form-control form-sm-4-inline mb-2" placeholder=".form-sm-4-inline">
+      <input class="form-control form-sm-4-inline mb-2" placeholder=".form-sm-4-inline">
+      <input class="form-control form-sm-6-inline mb-2" placeholder=".form-sm-6-inline">
+      <input class="form-control form-sm-6-inline mb-2" placeholder=".form-sm-6-inline">
+    </div>
+  </section>
+
+  <!-- Inline, flex wrapper -->
+  <section>
+    <h2 class="h4">Inline widths with a <code>d-flex flex-wrap</code> wrapper (recommended)</h2>
+    <p>The flex wrapper removes the whitespace gap, so rows that add up to 12 fit exactly, and fields wrap cleanly when they don't.</p>
+    <div class="demo-box">
+      <div class="d-flex flex-wrap">
+        <input class="form-control form-sm-4-inline mb-2" placeholder=".form-sm-4-inline">
+        <input class="form-control form-sm-4-inline mb-2" placeholder=".form-sm-4-inline">
+        <input class="form-control form-sm-4-inline mb-2" placeholder=".form-sm-4-inline">
+      </div>
+      <div class="d-flex flex-wrap">
+        <input class="form-control form-sm-6-inline mb-2" placeholder=".form-sm-6-inline">
+        <input class="form-control form-sm-6-inline mb-2" placeholder=".form-sm-6-inline">
+      </div>
+      <div class="d-flex flex-wrap">
+        <input class="form-control form-sm-3-inline" placeholder=".form-sm-3-inline">
+        <input class="form-control form-sm-9-inline" placeholder=".form-sm-9-inline">
+      </div>
+    </div>
+  </section>
+
+  <!-- Real-world -->
+  <section>
+    <h2 class="h4">Real-world example: address form</h2>
+    <p>Put the width class on a wrapper <code>div</code> so the label and field move together. The field inside keeps Bootstrap's normal 100% width, so it fills the wrapper.</p>
+    <div class="demo-box">
+      <form>
+        <label class="form-label" for="addr">Street address</label>
+        <input class="form-control form-sm-8 mb-3" id="addr" autocomplete="street-address">
+
+        <div class="d-flex flex-wrap">
+          <div class="form-sm-6-inline mb-3">
+            <label class="form-label" for="city">City</label>
+            <input class="form-control" id="city" autocomplete="address-level2">
+          </div>
+          <div class="form-sm-3-inline mb-3">
+            <label class="form-label" for="state">State</label>
+            <select class="form-select" id="state" autocomplete="address-level1">
+              <option>WA</option>
+              <option>OR</option>
+              <option>CA</option>
+            </select>
+          </div>
+          <div class="form-sm-3-inline mb-3">
+            <label class="form-label" for="zip">ZIP</label>
+            <input class="form-control" id="zip" autocomplete="postal-code" inputmode="numeric">
+          </div>
+        </div>
+
+        <label class="form-label" for="qty">Quantity</label>
+        <input class="form-control form-sm-2" id="qty" type="number" value="1" min="1">
+
+      </form>
+    </div>
+  </section>
+
+  <!-- Real-world 2-->
+  <section>
+    <h2 class="h4">Real-world example: inline sign-in form</h2>
+    <p>Labels, fields and the button sit on one line. Only the fields get a width class; the labels and
+      button size themselves. This row doesn't add up to 12, so the whitespace gap doesn't matter and no
+      flex wrapper is needed. Below 576px the fields go full width and stack under their labels.</p>
+    <p class="small text-body-secondary">The labels use <code>d-inline-block</code> so their top margin works on small screens
+      (margins don't apply to plain inline elements). The button is <code>type="button"</code> only so the demo doesn't
+      submit; use <code>type="submit"</code> in a real form.</p>
+    <p class="small text-body-secondary">This layout is meant for small inline forms. The labels and button take up
+      space that the width classes don't count, so a row of fields that adds up to 12 (three <code>form-sm-4-inline</code>
+      fields, for example) won't fit on one line and will wrap. Leave room for them, or put the labels above the fields
+      like the address form.</p>
+    <div class="demo-box">
+      <form>
+        <label class="form-label d-inline-block mt-3 mt-sm-0" for="username">Username:</label>
+        <input class="form-control form-sm-3-inline" id="username" autocomplete="username">
+
+        <label class="form-label d-inline-block mt-3 mt-sm-0" for="password">Password:</label>
+        <input class="form-control form-sm-3-inline" id="password" type="password" autocomplete="current-password">
+
+        <button type="button" class="btn btn-outline-primary mt-3 mt-sm-0">Sign in</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Custom -->
+  <section>
+    <h2 class="h4">Custom width</h2>
+    <p>For a one-off size, override the <code>--form-sm-w</code> variable on any element that has a <code>form-sm</code> class.</p>
+    <div class="demo-box">
+      <input class="form-control form-sm-12" style="--form-sm-w: 30%" placeholder="30% wide">
+    </div>
+  </section>
+
+  <!-- Gap -->
+  <section>
+    <h2 class="h4">Changing the inline gap</h2>
+    <p>The space between inline fields comes from <code>--form-sm-gap</code> (0.5rem by default). Set it globally on <code>:root</code>, or on one wrapper:</p>
+    <div class="demo-box">
+      <div class="d-flex flex-wrap" style="--form-sm-gap: 1.5rem">
+        <input class="form-control form-sm-4-inline" placeholder="1.5rem gap">
+        <input class="form-control form-sm-4-inline" placeholder="1.5rem gap">
+        <input class="form-control form-sm-4-inline" placeholder="1.5rem gap">
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js" integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu" crossorigin="anonymous"></script>
+
+<script>
+  // Demo only: show the HTML of each example in a code block under it,
+  // so the code shown always matches the example exactly.
+  document.querySelectorAll('.demo-box').forEach(function (box) {
+    var lines = box.innerHTML.replace(/^\s*\n/, '').replace(/\s+$/, '').split('\n');
+    var indent = Math.min.apply(null, lines.filter(function (l) { return l.trim(); })
+      .map(function (l) { return l.match(/^\s*/)[0].length; }));
+    var code = document.createElement('code');
+    code.textContent = lines.map(function (l) { return l.slice(indent); }).join('\n');
+    var pre = document.createElement('pre');
+    pre.appendChild(code);
+    box.after(pre);
+  });
+</script>
+</body>
+</html>

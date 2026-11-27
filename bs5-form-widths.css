@@ -1,0 +1,55 @@
+/*!
+ * Bootstrap 5 Form Width Utilities v2.0
+ * Load AFTER bootstrap.min.css
+ * MIT License
+ *
+ * Usage:
+ *   Block:   <input class="form-control form-sm-4">
+ *   Inline:  <input class="form-control form-sm-6-inline">
+ *
+ * Widths apply at 576px and up. Below that, fields fall back to
+ * Bootstrap's normal full-width behavior (no overrides needed).
+ *
+ * Tip: for pixel-perfect inline rows, wrap inline fields in
+ * <div class="d-flex flex-wrap">. This removes the whitespace gap
+ * browsers add between inline-block elements.
+ *
+ * Custom width: add the variable alongside any form-sm class, e.g.
+ *   <input class="form-control form-sm-12" style="--form-sm-w: 30%">
+ */
+
+:root {
+  --form-sm-gap: 0.5rem; /* space to the right of inline fields */
+}
+
+/* Column widths (shared by block and inline versions) */
+.form-sm-1,  .form-sm-1-inline  { --form-sm-w: 8.3333%; }
+.form-sm-2,  .form-sm-2-inline  { --form-sm-w: 16.6667%; }
+.form-sm-3,  .form-sm-3-inline  { --form-sm-w: 25%; }
+.form-sm-4,  .form-sm-4-inline  { --form-sm-w: 33.3333%; }
+.form-sm-5,  .form-sm-5-inline  { --form-sm-w: 41.6667%; }
+.form-sm-6,  .form-sm-6-inline  { --form-sm-w: 50%; }
+.form-sm-7,  .form-sm-7-inline  { --form-sm-w: 58.3333%; }
+.form-sm-8,  .form-sm-8-inline  { --form-sm-w: 66.6667%; }
+.form-sm-9,  .form-sm-9-inline  { --form-sm-w: 75%; }
+.form-sm-10, .form-sm-10-inline { --form-sm-w: 83.3333%; }
+.form-sm-11, .form-sm-11-inline { --form-sm-w: 91.6667%; }
+.form-sm-12, .form-sm-12-inline { --form-sm-w: 100%; }
+
+@media (min-width: 576px) {
+  /* Block versions */
+  :is(.form-sm-1, .form-sm-2, .form-sm-3, .form-sm-4, .form-sm-5, .form-sm-6,
+      .form-sm-7, .form-sm-8, .form-sm-9, .form-sm-10, .form-sm-11, .form-sm-12) {
+    width: var(--form-sm-w);
+  }
+
+  /* Inline versions */
+  :is(.form-sm-1-inline, .form-sm-2-inline, .form-sm-3-inline, .form-sm-4-inline,
+      .form-sm-5-inline, .form-sm-6-inline, .form-sm-7-inline, .form-sm-8-inline,
+      .form-sm-9-inline, .form-sm-10-inline, .form-sm-11-inline, .form-sm-12-inline) {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(var(--form-sm-w) - var(--form-sm-gap));
+    margin-right: var(--form-sm-gap);
+  }
+}
